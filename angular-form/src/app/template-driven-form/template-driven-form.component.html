@@ -1,0 +1,53 @@
+<div class="container">
+    <form #contactForm="ngForm" (submit)="saveData(contactForm)">
+        <p>
+            <label>First name : </label>
+            <input type="text" name="first_name" id="first_name" ngModel>
+        </p>
+        <p>
+            <label>Last name : </label>
+            <input type="text" name="last_name" id="last_name" ngModel>
+        </p>
+        <p>
+            <label>Mobile number : </label>
+            <input type="text" name="mobile_number" id="mobile_number" ngModel>
+        </p>
+        <p>
+            <label>Email : </label>
+            <input type="text" name="email" id="email" ngModel>
+        </p>
+        <p>
+            <label>Gender : </label>
+            <input type="radio" name="gender" id="gender" value="Male" ngModel>Male
+            <input type="radio" name="gender" id="gender" value="Female" ngModel>Female
+        </p>
+        <p>
+            <label>Married status : </label>
+            <input type="checkbox" name="married_status" id="married_status" ngModel>
+        </p>
+        <p>
+            <label>Country : </label>
+            <select name="country" id="country" ngModel>
+                <option value="">Select</option>
+                <option [ngValue]="item.id" *ngFor="let item of countryData"> {{item.name}} </option>
+            </select>
+        </p>
+        <div ngModelGroup="address">
+            <p>
+                <label>City name : </label>
+                <input type="text" name="city_name" id="city_name" ngModel>
+            </p>
+            <p>
+                <label>State name : </label>
+                <input type="text" name="state_name" id="state_name" ngModel>
+            </p>
+            <p>
+                <label>Pincode : </label>
+                <input type="text" name="pin_code" id="pin_code" ngModel>
+            </p>
+        </div>
+        <p>
+            <button type="submit"> Save Button</button>
+        </p>
+    </form>
+</div>
