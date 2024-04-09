@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-template-driven-form',
   templateUrl: './template-driven-form.component.html',
   styleUrl: './template-driven-form.component.css'
 })
-export class TemplateDrivenFormComponent {
+export class TemplateDrivenFormComponent implements OnInit{
 
   countryData:Country[]=[
     new Country("1","India"),
@@ -14,6 +15,24 @@ export class TemplateDrivenFormComponent {
     new Country("3","Englans"),
     new Country("4","Canada")
   ]
+  contactFormData!:ContactData
+  ngOnInit(): void {
+    this.contactFormData={
+      firstName:"Nirosha",
+      lastName:"Kannan",
+      email:"niroshakannan17@gmail.com",
+      mobileNumber:"7538884535",
+      gender:"Female",
+      marriedStatus:true,
+      country:"1",
+      address:{
+        cityName:"Madurai",
+        stateName:"Tamilnadu",
+        pinCode:"625018"
+      }
+
+    }
+  }
 
   saveData(formData:NgForm)
   {
@@ -30,5 +49,21 @@ class Country{
   {
     this.id = id;
     this.name = name;
+  }
+}
+
+class ContactData{
+
+  firstName!:string;
+  lastName!:string;
+  email!:string;
+  mobileNumber!:string;
+  gender!:string;
+  country!:string;
+  marriedStatus!:boolean;
+  address !:{
+    cityName:string,
+    stateName:string,
+    pinCode:string,
   }
 }

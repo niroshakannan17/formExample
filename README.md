@@ -21,3 +21,23 @@ variable_name:className[]=[
 
 if you to nestedformgroup
 use ngModelGroup="anyname"
+
+when the component need default value use ngOnInit
+
+class classname{
+    paramenter1:dataType;
+    paramenter2:dataType;
+    paramenter3:dataType;
+    paramenter4:dataType;
+}
+
+variableName:classname
+
+noonit(){
+    this.variableName = {
+        paramenter1 = "value;
+        paramenter2 = "value;
+        paramenter3 = "value;
+        paramenter3 = "value;
+    }
+}
