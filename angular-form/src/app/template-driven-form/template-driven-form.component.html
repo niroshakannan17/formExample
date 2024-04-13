@@ -1,20 +1,54 @@
 <div class="container">
-    <form #contactForm="ngForm" (submit)="saveData(contactForm)">
+    <form #contactForm="ngForm" (submit)="saveData(lname)">
         <p>
             <label>First name : </label>
-            <input type="text" name="first_name" id="first_name" [(ngModel)]="contactFormData.firstName">
+            <input type="text" #fname="ngModel" name="first_name" id="first_name" [(ngModel)]="contactFormData.firstName" minlength="10">
+            <span *ngIf="!fname.valid && (fname.touched==true || fname.dirty== true)">
+                <span class="text-danger" *ngIf="fname.control.errors?.['required']">
+                    first name is required
+                </span>
+                <span class="text-danger" *ngIf="fname.errors?.['minlength']">
+                    Miminum legth 10
+                </span>
+            </span>
         </p>
         <p>
             <label>Last name : </label>
-            <input type="text" name="last_name" id="last_name" [(ngModel)]="contactFormData.lastName">
+            <input type="text" #lname="ngModel" name="last_name" id="last_name" [(ngModel)]="contactFormData.lastName" required maxlength="10" pattern="^[a-zA-Z]+$">
+
+            <span *ngIf="!lname.valid && (lname.touched==true || lname.dirty== true)">
+                <span class="text-danger" *ngIf="lname.control.errors?.['required']">
+                    last name is required
+                </span>
+                <span class="text-danger" *ngIf="lname.errors?.['maxlength']">
+                    maximum legth 10
+                </span>
+                <span class="text-danger" *ngIf="lname.errors?.['pattern']">
+                   Only string
+                </span>
+            </span>
         </p>
         <p>
             <label>Mobile number : </label>
-            <input type="text" name="mobile_number" id="mobile_number" [(ngModel)]="contactFormData.mobileNumber">
+            <input type="text" #mobile="ngModel" name="mobile_number" id="mobile_number" [(ngModel)]="contactFormData.mobileNumber" required pattern="^[0-9]*$">
+
+            <span *ngIf="!mobile.valid && (mobile.touched==true || mobile.dirty== true)">
+                <span class="text-danger" *ngIf="mobile.control.errors?.['required']">
+                    mobile number is required
+                </span>
+                <span class="text-danger" *ngIf="mobile.errors?.['pattern']">
+                   Only Number
+                </span>
+            </span>
         </p>
         <p>
             <label>Email : </label>
-            <input type="text" name="email" id="email" [(ngModel)]="contactFormData.email">
+            <input type="text" #email="ngModel" name="email" id="email" [(ngModel)]="contactFormData.email" required>
+            <span *ngIf="!email.valid && (email.touched==true || email.dirty== true)">
+                <span class="text-danger" *ngIf="email.control.errors?.['required']">
+                    email is required
+                </span>
+            </span>
         </p>
         <p>
             <label>Gender : </label>
@@ -47,7 +81,8 @@
             </p>
         </div>
         <p>
-            <button type="submit"> Save Button</button>
+            <!--[disabled]="!contactForm.valid"-->
+            <button type="submit" > Save Button</button>
         </p>
     </form>
 </div>

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { NgControl, NgForm } from '@angular/forms';
 import { OnInit } from '@angular/core';
 
 @Component({
@@ -18,7 +18,7 @@ export class TemplateDrivenFormComponent implements OnInit{
   contactFormData!:ContactData
   ngOnInit(): void {
     this.contactFormData={
-      firstName:"Nirosha",
+      firstName:"",
       lastName:"Kannan",
       email:"niroshakannan17@gmail.com",
       mobileNumber:"7538884535",
@@ -34,9 +34,9 @@ export class TemplateDrivenFormComponent implements OnInit{
     }
   }
 
-  saveData(formData:NgForm)
+  saveData(formcontrolData:NgControl)
   {
-    console.log(formData.value);
+    console.log(formcontrolData);
   }
 
 }
